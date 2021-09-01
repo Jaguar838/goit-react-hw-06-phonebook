@@ -1,41 +1,23 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import logger from "redux-logger";
-import contactsReducer from "./contacts/reducer";
+// Создаем глобальный стейт он же store.
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  }),
-  logger,
-];
+import { configureStore } from '@reduxjs/toolkit';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { logger } from 'redux-logger';
+import contactsReducer from './contacts/reducer';
 
 const contactsPersistConfig = {
-  key: "contacts",
-  storage,
-  blacklist: ["filter"],
+    key: 'contacts',
+    storage,
+    blacklist: ['filter'],
 };
 
-const store = configureStore({
-  reducer: {
-    contacts: persistReducer(contactsPersistConfig, contactsReducer),
-  },
-  middleware,
-  devTools: process.env.NODE_ENV === "development",
+export const store = configureStore({
+    reducer: {
+        contacts: persistReducer(contactsPersistConfig, contactsReducer),
+    },
+    middleware: getDefaultMiddleware => getDefaultMiddleware().concat(logger),
+    devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
-
-export default { store, persistor };
+export const persistor = persistStore(store);
