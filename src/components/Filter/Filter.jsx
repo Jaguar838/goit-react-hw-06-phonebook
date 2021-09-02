@@ -1,8 +1,13 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFilter } from 'redux/contacts/selectors';
 import PropTypes from 'prop-types';
 import css from './Filter.module.scss';
+import { changeFilter } from 'redux/contacts/actions';
 
-export const Filter = ({ filter, onChange }) => {
+export const Filter = () => {
+    const filter = useSelector(getFilter);
+    const dispatch = useDispatch();
     return (
         <label className={css.label}>
             <span className={css.labelText}>Find contacts by name</span>
@@ -10,7 +15,7 @@ export const Filter = ({ filter, onChange }) => {
                 type="text"
                 name="filter"
                 value={filter}
-                onChange={({ target }) => onChange(target.value)}
+                onChange={({ target }) => dispatch(changeFilter(target.value))}
                 placeholder="Enter name for Search"
                 pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."

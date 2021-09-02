@@ -1,33 +1,17 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button } from 'UI/Button';
-
+import { ContactItem } from 'components/ContactItem/ContactItem';
+import { getFilteredContacts } from 'redux/contacts/selectors';
 import css from './ContactList.module.css';
 
-const ContactListItem = ({ name, phone, onRemove }) => {
-    return (
-        <li className={css.item}>
-            <span className={css.span}>
-                {name}:{phone}
-            </span>
-            <Button className="btn" onClick={onRemove}>
-                Delete
-            </Button>
-        </li>
-    );
-};
-
-export const ContactList = ({ contacts, onRemove }) => {
-    console.log(contacts);
+export const ContactList = () => {
+    const visibleContacts = useSelector(getFilteredContacts);
+    console.log('visibleContacts', visibleContacts);
     return (
         <ul className={css.contacts}>
-            {contacts?.map(({ id, name, phone }) => (
-                <ContactListItem
-                    key={id}
-                    name={name}
-                    phone={phone}
-                    onRemove={() => onRemove(id)}
-                />
+            {visibleContacts?.map(({ id, name, phone }) => (
+                <ContactItem key={id} name={name} phone={phone} />
             ))}
         </ul>
     );
@@ -41,7 +25,4 @@ ContactList.propTypes = {
             phone: PropTypes.string.isRequired,
         }),
     ).isRequired,
-    onRemove: PropTypes.func.isRequired,
 };
-
-export default ContactList;

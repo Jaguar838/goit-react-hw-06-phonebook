@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addContact, checkUnique } from 'redux/contacts/actions';
 import { useForm } from 'react-hook-form';
-import uuid from 'react-uuid';
-import { Button } from 'UI/Button';
+import { Button } from 'UI';
 import css from './ContactForm.module.css';
-import PropTypes from 'prop-types';
 
-export function ContactForm({ onAdd, onCheckUnique }) {
+export function ContactForm() {
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm();
-
+    const dispatch = useDispatch();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
 
@@ -29,7 +29,11 @@ export function ContactForm({ onAdd, onCheckUnique }) {
                 return;
         }
     };
-
+    const onCheckUnique = name => {
+        const isExistContact = !!dispatch(checkUnique(name));
+        isExistContact && alert('Contact is already exist');
+        return !isExistContact;
+    };
     function validateForm() {
         if (!name || !phone) {
             alert('Some field is empty');
@@ -41,7 +45,7 @@ export function ContactForm({ onAdd, onCheckUnique }) {
         // const { name, phone } = data;
         const isValidateForm = validateForm();
         if (!isValidateForm) return;
-        onAdd({ id: uuid(), name, phone });
+        dispatch(addContact(data));
         resetForm();
         console.log('Submit', data, errors);
     };
@@ -56,7 +60,6 @@ export function ContactForm({ onAdd, onCheckUnique }) {
             <input
                 className={css.input}
                 type="text"
-                // name="name"
                 placeholder="Enter name"
                 {...register('name', {
                     required: true,
@@ -64,7 +67,6 @@ export function ContactForm({ onAdd, onCheckUnique }) {
                         /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
                 })}
                 value={name}
-                required
                 onChange={handleChangeForm}
             />
             {errors.name && alert('Name is required.')}
@@ -72,7 +74,6 @@ export function ContactForm({ onAdd, onCheckUnique }) {
             <input
                 className={css.input}
                 type="tel"
-                // name="phone"
                 placeholder="Enter phone number"
                 {...register('phone', {
                     required: true,
@@ -80,7 +81,6 @@ export function ContactForm({ onAdd, onCheckUnique }) {
                         /\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}/,
                 })}
                 value={phone}
-                required
                 onChange={handleChangeForm}
             />
             {errors.phone && alert('Please enter number for phone.')}
@@ -89,8 +89,3 @@ export function ContactForm({ onAdd, onCheckUnique }) {
         </form>
     );
 }
-
-ContactForm.propTypes = {
-    onAdd: PropTypes.func.isRequired,
-    onCheckUnique: PropTypes.func.isRequired,
-};

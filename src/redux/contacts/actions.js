@@ -13,3 +13,4 @@ export const addContact = createAction('add', data => ({
 export const deleteContact = createAction('delete');
 
 export const changeFilter = createAction('changeFilter');
+export const checkUnique = createAction('checkUnique');
