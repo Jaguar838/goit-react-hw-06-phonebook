@@ -30,7 +30,8 @@ export function ContactForm() {
         }
     };
     const onCheckUnique = name => {
-        const isExistContact = !!dispatch(checkUnique(name));
+        const isExistContact = !dispatch(checkUnique(name));
+        // const isExistContact = !!dispatch(checkUnique(name));
         isExistContact && alert('Contact is already exist');
         return !isExistContact;
     };
