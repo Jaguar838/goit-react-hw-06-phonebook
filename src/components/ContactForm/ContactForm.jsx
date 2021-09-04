@@ -42,7 +42,6 @@ export function ContactForm() {
         return onCheckUnique(name);
     }
     const onSubmit = data => {
-        // const { name, phone } = data;
         const isValidateForm = validateForm();
         if (!isValidateForm) return;
         dispatch(addContact(data));
