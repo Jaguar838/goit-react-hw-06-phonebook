@@ -6,7 +6,7 @@ import css from './ContactList.module.css';
 
 export const ContactList = () => {
     const visibleContacts = useSelector(getFilteredContacts);
-    console.log('visibleContacts', visibleContacts);
+    //console.log('visibleContacts', visibleContacts);
     return (
         <ul className={css.contacts}>
             {visibleContacts?.map(({ id, name, phone }) => (
