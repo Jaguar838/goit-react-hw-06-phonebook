@@ -4,12 +4,12 @@ import { configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { logger } from 'redux-logger';
-import contactsReducer from './contacts/reducer';
+import { contactsReducer } from './contacts/reducer';
 
 const contactsPersistConfig = {
     key: 'contacts',
     storage,
-    blacklist: ['filter'],
+    whitelist: ['contacts'],
 };
 
 export const store = configureStore({
@@ -18,7 +18,6 @@ export const store = configureStore({
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({ serializableCheck: false }).concat(logger),
-    devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
