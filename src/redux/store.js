@@ -9,7 +9,7 @@ import { contactsReducer } from './contacts/reducer';
 const contactsPersistConfig = {
     key: 'contacts',
     storage,
-    whitelist: ['contacts'],
+    blacklist: ['filter'],
 };
 
 export const store = configureStore({

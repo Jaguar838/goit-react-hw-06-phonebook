@@ -13,10 +13,10 @@ export function ContactForm() {
     const [contact, setContact] = useState({ name: '', phone: '' });
 
     const onCheckUnique = (allContasts, newName) => {
-        const isExistContact = !!allContasts.find(
-            contact => contact.name === newName,
+        const isExistContact = allContasts.some(
+            contact => contact.name.toLowerCase() === newName.toLowerCase(),
         );
-        isExistContact && toast.error('Contact is already exist');
+        isExistContact && toast.error(`"${newName}" is already exist`);
         return !isExistContact;
     };
     function validateForm() {
@@ -29,8 +29,8 @@ export function ContactForm() {
     const handleSubmit = evt => {
         evt.preventDefault();
         const newContact = {
-            ...contact,
             id: Date.now(),
+            ...contact,
         };
         const isValidateForm = validateForm();
         if (!isValidateForm) return;
