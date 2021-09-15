@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-06-phonebook/static/css/main.3e752136.chunk.css",
-    "main.js": "/goit-react-hw-06-phonebook/static/js/main.6e39b4be.chunk.js",
-    "main.js.map": "/goit-react-hw-06-phonebook/static/js/main.6e39b4be.chunk.js.map",
+    "main.css": "/goit-react-hw-06-phonebook/static/css/main.e2fc5873.chunk.css",
+    "main.js": "/goit-react-hw-06-phonebook/static/js/main.09b391ec.chunk.js",
+    "main.js.map": "/goit-react-hw-06-phonebook/static/js/main.09b391ec.chunk.js.map",
     "runtime-main.js": "/goit-react-hw-06-phonebook/static/js/runtime-main.4ac6b91a.js",
     "runtime-main.js.map": "/goit-react-hw-06-phonebook/static/js/runtime-main.4ac6b91a.js.map",
-    "static/js/2.1c1360e5.chunk.js": "/goit-react-hw-06-phonebook/static/js/2.1c1360e5.chunk.js",
-    "static/js/2.1c1360e5.chunk.js.map": "/goit-react-hw-06-phonebook/static/js/2.1c1360e5.chunk.js.map",
+    "static/js/2.40a55d05.chunk.js": "/goit-react-hw-06-phonebook/static/js/2.40a55d05.chunk.js",
+    "static/js/2.40a55d05.chunk.js.map": "/goit-react-hw-06-phonebook/static/js/2.40a55d05.chunk.js.map",
     "index.html": "/goit-react-hw-06-phonebook/index.html",
-    "precache-manifest.aabe4822f82e3c1b75e615e1d02452c3.js": "/goit-react-hw-06-phonebook/precache-manifest.aabe4822f82e3c1b75e615e1d02452c3.js",
+    "precache-manifest.51c45831e2da40e8419d3e7698ab5ea9.js": "/goit-react-hw-06-phonebook/precache-manifest.51c45831e2da40e8419d3e7698ab5ea9.js",
     "service-worker.js": "/goit-react-hw-06-phonebook/service-worker.js",
-    "static/css/main.3e752136.chunk.css.map": "/goit-react-hw-06-phonebook/static/css/main.3e752136.chunk.css.map",
-    "static/js/2.1c1360e5.chunk.js.LICENSE.txt": "/goit-react-hw-06-phonebook/static/js/2.1c1360e5.chunk.js.LICENSE.txt",
+    "static/css/main.e2fc5873.chunk.css.map": "/goit-react-hw-06-phonebook/static/css/main.e2fc5873.chunk.css.map",
+    "static/js/2.40a55d05.chunk.js.LICENSE.txt": "/goit-react-hw-06-phonebook/static/js/2.40a55d05.chunk.js.LICENSE.txt",
     "static/media/index.css": "/goit-react-hw-06-phonebook/static/media/montserrat-v15-latin_cyrillic-regular.b3e1c2f0.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.4ac6b91a.js",
-    "static/js/2.1c1360e5.chunk.js",
-    "static/css/main.3e752136.chunk.css",
-    "static/js/main.6e39b4be.chunk.js"
+    "static/js/2.40a55d05.chunk.js",
+    "static/css/main.e2fc5873.chunk.css",
+    "static/js/main.09b391ec.chunk.js"
   ]
 }
