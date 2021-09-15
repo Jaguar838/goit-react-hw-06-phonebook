@@ -36,7 +36,6 @@ export function ContactForm() {
         if (!isValidateForm) return;
         dispatch(addContact(newContact));
         resetForm();
-        console.log('Submit', newContact);
     };
 
     const resetForm = () => {
