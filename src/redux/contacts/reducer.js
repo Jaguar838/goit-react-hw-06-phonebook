@@ -1,11 +1,6 @@
 // Создаем отдельные части стейта - reducer(ы).
 import { createReducer } from '@reduxjs/toolkit';
-import {
-    addContact,
-    deleteContact,
-    checkUnique,
-    changeFilter,
-} from './actions';
+import { addContact, deleteContact, changeFilter } from './actions';
 import { combineReducers } from 'redux';
 
 const initialState = [
@@ -22,14 +17,11 @@ const items = createReducer(initialState, {
     [addContact]: (state, { payload }) => [...state, payload],
     [deleteContact]: (state, { payload }) =>
         state.filter(({ id }) => id !== payload),
-    [checkUnique]: (state, { payload }) =>
-        state.find(({ name }) => name === payload),
 });
 const filter = createReducer('', {
     [changeFilter]: (_, { payload }) => payload,
 });
-console.log('items', items);
-console.log('filter', filter);
+
 export const contactsReducer = combineReducers({
     items,
     filter,

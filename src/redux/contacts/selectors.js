@@ -12,4 +12,4 @@ export const getFilteredContacts = state => {
     return contacts.filter(({ name }) => name.toLowerCase().includes(filter));
 };
 
-export const isPhonebook = state => state.contacts.items.length > 0;
+export const get_isPhonebook = state => state.contacts.items.length > 0;
